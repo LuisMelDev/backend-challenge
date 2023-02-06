@@ -6,6 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { File } from 'src/files/entities/file.entity';
 
 @Entity('users')
 export class User {
@@ -27,11 +28,12 @@ export class User {
 
   @Column('text', {
     nullable: true,
+    select: false,
   })
   resetToken: string;
 
-  // @OneToMany(() => Product, (product) => product.user)
-  // products: Product;
+  @OneToMany(() => File, (file) => file.user)
+  files: File;
 
   @BeforeInsert()
   checkFieldsBeforeInsert() {

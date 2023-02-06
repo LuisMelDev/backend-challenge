@@ -136,7 +136,10 @@ export class AuthService {
     }
 
     try {
-      const user = await this.userRepository.findOneBy({ id: data['id'] });
+      const user = await this.userRepository.findOne({
+        where: { id: data['id'] },
+        select: { resetToken: true, email: true, id: true },
+      });
 
       if (!(user.resetToken === token)) {
         throw new BadRequestException('Token not valid');

@@ -15,8 +15,8 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-    .setTitle('Ecommerce example')
-    .setDescription('The Ecommerce API description')
+    .setTitle('API DOC')
+    .setDescription('API DOC')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
